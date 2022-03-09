@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+
+<style>
+  body {
+    background-color: antiquewhite;
+    padding: 0%;
+    margin: 0%;
+    display: block;
+  }
+
+  @keyframes glitch {
+
+    2%,
+    64% {
+      transform: translate(2px, -2px);
+    }
+
+    4%,
+    60% {
+      transform: translate(-2px, 2px);
+    }
+
+    62% {
+      transform: translate(13px, -1px);
+    }
+  }
+
+  @keyframes glitchTop {
+
+    2%,
+    64% {
+      transform: translate(2px, -2px);
+    }
+
+    4%,
+    60% {
+      transform: translate(-2px, 2px);
+    }
+
+    62% {
+      transform: translate(13px, -1px) skew(-13deg);
+    }
+  }
+
+  #Hello {
+    font-size: 40px;
+    animation: glitch 0.9s linear infinite;
+    z-index: 1;
+    color: white;
+    text-align: center;
+  }
+
+  #Hello::before {
+    content: attr(id);
+    color: red;
+    z-index: -1;
+    animation: glitchTop 0.7s linear infinite;
+    position: absolute;
+
+  }
+</style>
+
+<body>
+  <div id="Hello">
+    {{ message }}
+  </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+  var app = new Vue({
+    el: '#Hello',
+    data: {
+      message: 'Hello'
+    }
+
+  })
+
+</script>
+
+</html>
