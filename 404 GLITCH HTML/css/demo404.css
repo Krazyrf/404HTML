@@ -1,0 +1,69 @@
+
+div{
+  animation: glitch 0.5s linear infinite;
+  z-index:1;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+  
+}
+
+div:before,
+div:after{
+  content: attr(title);
+  position:absolute;
+  left: 0;   
+  
+}
+
+div:before{
+  animation: glitchTop 0.7s linear infinite;
+  /*clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);*/
+  color: rgba(127, 255, 212, 0.767);
+  z-index:-1;
+  transform: translateX(5px)
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(5px,-5px) skew(-15deg); 
+  }
+}
+
+div:after{
+  animation: glitchBotom 1.5s linear infinite;
+  /* clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);  */
+  /* -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);  */
+  color: rgba(255, 0, 0, 0.767);
+  z-index:-1;
+  transform: translateX(-5px)
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-4px,20px) skew(11deg); 
+  }
+}
